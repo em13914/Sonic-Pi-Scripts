@@ -68,6 +68,7 @@ live_loop :melody do
   end
 end
 
+# the variable x starts at 0 and slowly gets louder until the amplitude = 1 after 64 iterations
 64.times do
   sample :drum_snare_hard, amp: x
   sleep 0.0625
@@ -78,6 +79,7 @@ end
   x = x + 0.015625/2
 end
 
+# as soon as the snare builds up for 16 beats the :drums live_loop starts playing with the :melody live_loop
 live_loop :drums do
   sample :loop_amen, beat_stretch: 2, rate: 0.5
   sleep 2
