@@ -4,7 +4,11 @@
 
 use_bpm 128
 use_synth :prophet
+# this is the variable I am incrementing
 x = 0
+# this is the variable that controls which sample plays on lines 78, 80, and 82
+my_sample = :drum_snare_soft
+
 
 # main melody playing all by itself
 3.times do
@@ -72,10 +76,12 @@ end
 64.times do
   sample :drum_snare_hard, amp: x
   sleep 0.0625
-  3.times do
-    sample :drum_snare_soft, amp: x
-    sleep 0.0625
-  end
+  sample my_sample, amp: x
+  sleep 0.0625
+  sample my_sample, amp: x
+  sleep 0.0625
+  sample my_sample, amp: x
+  sleep 0.0625
   x = x + 0.015625/2
 end
 
